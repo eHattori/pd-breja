@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+[ -z "$DEBUG" ] || set -x
+
+export NODE_ENV="test"
+scripts/setup
+
+mkdir -p ./coverage
+
+echo "===> Running coverage..."
+# run the tests
+./node_modules/.bin/lab -c -S -T ./node_modules/lab-babel -l -r html -o ./coverage/coverage.html -r lcov -o ./coverage/lcov.info -r json -o ./coverage/data.json
+# submit to coveralls
+# enable coveralls
+cat ./coverage/lcov.info | ./node_modules/.bin/coveralls

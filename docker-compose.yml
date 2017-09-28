@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mysql_dev:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=pd-breja
+      - MYSQL_DATABASE=pd-breja
+      - MYSQL_USER=pd-breja
+      - MYSQL_PASSWORD=pd-breja
+    expose:
+      - '3306'
+    ports:
+      - '3306:3306'

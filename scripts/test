@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# script/test: Run test suite for application. Optionally pass in a path to an
+#              individual test file to run a single test.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+[ -z "$DEBUG" ] || set -x
+
+echo "===> Running linter..."
+
+./node_modules/semistandard/bin/cmd.js
+
+export NODE_ENV="test"
+scripts/setup
+
+echo "===> Running tests..."
+
+./node_modules/.bin/lab -c -S -T ./node_modules/lab-babel -l -t 100 -v  

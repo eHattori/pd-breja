@@ -1,0 +1,32 @@
+{
+    "name": "pd-breja-api",
+    "version": "0.0.1",
+    "engines": {
+        "node": "8.0.0"
+    },
+    "description": "Backend to PDV",
+    "main": "index.js",
+    "scripts": {
+        "test": "scripts/test",
+        "coverage": "scripts/coverage",
+        "start": "scripts/server"
+    },
+    "devDependencies": {
+        "babel-register": "^6.26.0",
+        "coveralls": "^3.0.0",
+        "lab": "^14.3.1",
+        "lab-babel": "^1.1.1",
+        "semistandard": "^11.0.0"
+    },
+    "dependencies": {
+        "dotenv": "^4.0.0",
+        "mysql": "^2.14.1",
+        "sequelize": "^3.30.4",
+        "sequelize-cli": "^3.0.0"
+    },
+    "semistandard": {
+        "ignore": [
+            "**/modules/"
+        ]
+    }
+}
