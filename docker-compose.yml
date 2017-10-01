@@ -3,10 +3,10 @@ services:
   mysql_dev:
     image: mysql:5.7
     environment:
-      - MYSQL_DATABASE=pd-breja
+      - MYSQL_DATABASE=pd_breja
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_USER=pd-breja
-      - MYSQL_PASSWORD=pd-breja
+      - MYSQL_USER=pd_breja
+      - MYSQL_PASSWORD=pd_breja
     expose:
       - '3306'
     ports:

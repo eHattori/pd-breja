@@ -4,4 +4,4 @@ node_js:
 services:
   - mysql
 before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS pd-breja;'
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS pd_breja;'
