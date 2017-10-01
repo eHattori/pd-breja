@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const compression = require("compression");
 const cors = require('cors');
 const auth = require('./middlewares/auth');
+const logger = require('./utils/logger');
 
 const app = express()
 
@@ -17,5 +18,5 @@ app.get('/', function (req, res) {
 })
 
 app.listen((process.env.PORT || 3000), function () {
-  console.log("Listening on " + (process.env.PORT || 3000));
+  logger.info("Listening on " + (process.env.PORT || 3000));
 })
