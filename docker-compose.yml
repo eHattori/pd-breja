@@ -3,8 +3,8 @@ services:
   mysql_dev:
     image: mysql:5.7
     environment:
-      - MYSQL_ROOT_PASSWORD=pd-breja
       - MYSQL_DATABASE=pd-breja
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_USER=pd-breja
       - MYSQL_PASSWORD=pd-breja
     expose:
