@@ -18,4 +18,6 @@ echo "===> Running linter..."
 
 echo "===> Running tests..."
 
-./node_modules/.bin/_mocha test/**/*
+./node_modules/.bin/_mocha --compilers js:./node_modules/.bin/babel-core/register test/**/*
+
+

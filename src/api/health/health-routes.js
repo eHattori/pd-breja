@@ -1,10 +1,12 @@
 'use strict';
-const express = require('express');
 
-var HealthRoute = {
+export default class HealthRoute {
+  constructor (express) {
+    this.express = express;
+  }
 
-  getRoutes: function () {
-    var app = express();
+  getRoutes () {
+    var app = this.express();
 
     app.get('/ping', function (req, res) {
       res.status(200).json({status: 'pong'});
@@ -12,6 +14,4 @@ var HealthRoute = {
 
     return app;
   }
-};
-
-module.exports = HealthRoute;
+}

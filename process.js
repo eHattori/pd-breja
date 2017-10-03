@@ -8,6 +8,7 @@ pm2.connect(function () {
   pm2.start({
     script: './src/app.js',
     instances: 4,
+    interpreterArgs: './node_modules/.bin/babel-node',
     max_memory_restart: '150M'
   }, function (err, apps) {
     if (err) {

@@ -11,11 +11,6 @@ scripts/bootstrap
 
 echo "===> Setting DB..."
 
-# reset database
-node_modules/.bin/sequelize db:migrate:undo:all
-node_modules/.bin/sequelize db:migrate
-
 #Seed database
-node_modules/.bin/sequelize db:seed:all
 
 echo "===> App is ready"

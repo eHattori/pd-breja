@@ -1,4 +1,6 @@
 'use strict';
+import HealthRoute from '../../src/api/health/health-routes';
+import express from 'express';
 
 describe('Test HealthRoutes', function () {
 
@@ -7,11 +9,11 @@ describe('Test HealthRoutes', function () {
     var token;
     var config;
     var jwt;
-    var should;
+    var should;    
 
-    before(function(done){
+    before(function(done){        
 
-        healthApp = require('../../src/api/health/health-routes');
+        healthApp = new HealthRoute(express);
         config = require('../../src/api/config.js');
         should = require('should');
         request = require('supertest')(healthApp.getRoutes());

@@ -1,22 +1,19 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const compression = require('compression');
-const cors = require('cors');
-const auth = require('./middlewares/auth');
-const logger = require('./utils/logger');
-const app = express();
+import express from 'express';
+import bodyParser from 'body-parser';
+import compression from 'compression';
+import cors from 'cors';
+import auth from './middlewares/auth';
+import logger from './utils/logger';
+import HealthRoute from './api/health/health-routes';
 
-const healthApp = require('./api/health/health-routes');
+const app = express();
+const healthApp = new HealthRoute(express);
 
 app.use(compression());
 app.use(cors({credentials: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(auth);
-
-app.get('/api', function (req, res) {
-  res.send('Hello World!');
-});
 
 app.use('/health', healthApp.getRoutes());
 
