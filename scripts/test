@@ -7,7 +7,6 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-export NODE_ENV="test"
 scripts/setup
 
 [ -z "$DEBUG" ] || set -x
@@ -17,6 +16,8 @@ echo "===> Running linter..."
 ./node_modules/semistandard/bin/cmd.js
 
 echo "===> Running tests..."
+
+export NODE_ENV="test"
 
 ./node_modules/.bin/_mocha --compilers js:babel-core/register test/**/*
 
