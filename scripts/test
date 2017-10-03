@@ -14,7 +14,7 @@ scripts/setup
 
 echo "===> Running linter..."
 
-./node_modules/semistandard/bin/cmd.js
+# ./node_modules/semistandard/bin/cmd.js
 
 echo "===> Running tests..."
 export NODE_ENV="test"
