@@ -18,4 +18,4 @@ scripts/setup
 
 echo "===> Running tests..."
 
-./node_modules/.bin/lab -c -S -T ./node_modules/lab-babel -l -t 100 -v  
+./node_modules/.bin/_mocha test/**/*
