@@ -1,13 +1,11 @@
 version: '3'
 services:
-  mysql_dev:
-    image: mysql:5.7
-    environment:
-      - MYSQL_DATABASE=pd_breja
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_USER=pd_breja
-      - MYSQL_PASSWORD=pd_breja
-    expose:
-      - '3306'
+  mongo:
+    container_name: mongo_pd_breja
+    image: mongo
     ports:
-      - '3306:3306'
+       - "27017:27017"
+    environment:
+      MONGODB_USER: "pd_breja"
+      MONGODB_DATABASE: "pd_breja"
+      MONGODB_PASS: "pd_breja"
