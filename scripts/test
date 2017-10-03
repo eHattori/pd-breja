@@ -7,18 +7,20 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-scripts/setup
-
-ls
-
 [ -z "$DEBUG" ] || set -x
 
 echo "===> Running linter..."
+
+if [ -f "package.json" ]; then
+  echo "==> Installing dev module dependencies…"
+  npm install --dev
+fi
 
 ./node_modules/semistandard/bin/cmd.js
 
 echo "===> Running tests..."
 export NODE_ENV="test"
+scripts/setup
 
 ./node_modules/.bin/_mocha --compilers js:babel-core/register test/**/*
 
