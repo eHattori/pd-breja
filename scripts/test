@@ -7,14 +7,14 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+export NODE_ENV="test"
+scripts/setup
+
 [ -z "$DEBUG" ] || set -x
 
 echo "===> Running linter..."
 
 ./node_modules/semistandard/bin/cmd.js
-
-export NODE_ENV="test"
-scripts/setup
 
 echo "===> Running tests..."
 
