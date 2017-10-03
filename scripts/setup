@@ -11,6 +11,7 @@ scripts/bootstrap
 
 echo "===> Setting DB..."
 
+scripts/migration
 #Seed database
 
 echo "===> App is ready"

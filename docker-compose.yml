@@ -4,8 +4,4 @@ services:
     container_name: mongo_pd_breja
     image: mongo
     ports:
-       - "27017:27017"
-    environment:
-      MONGODB_USER: "pd_breja"
-      MONGODB_DATABASE: "pd_breja"
-      MONGODB_PASS: "pd_breja"
+       - "27017:27017"    

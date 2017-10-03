@@ -5,7 +5,7 @@ export default class HealthRoute {
     this.express = express;
   }
 
-  getRoutes () {
+  getApp () {
     var app = this.express();
 
     app.get('/ping', function (req, res) {

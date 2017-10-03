@@ -13,7 +13,7 @@ echo "===> Running linter..."
 
 if [ -f "package.json" ]; then
   echo "==> Installing dev module dependencies…"
-  npm install --dev
+  npm install --only=dev
 fi
 
 ./node_modules/semistandard/bin/cmd.js

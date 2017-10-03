@@ -16,7 +16,7 @@ describe('Test HealthRoutes', function () {
         healthApp = new HealthRoute(express);
         config = require('../../src/api/config.js');
         should = require('should');
-        request = require('supertest')(healthApp.getRoutes());
+        request = require('supertest')(healthApp.getApp());
         jwt = require('jsonwebtoken');
         token = jwt.sign({ foo: 'bar' }, config.secret, { algorithm: 'HS256' });
         done();
