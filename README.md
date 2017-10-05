@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/eHattori/pd-breja.svg?branch=master)](https://travis-ci.org/eHattori/pd-breja)
+[![Coverage Status](https://coveralls.io/repos/github/eHattori/pd-breja/badge.svg?branch=master)](https://coveralls.io/github/eHattori/pd-breja?branch=master)
+
 
 # PD-Breja
 
