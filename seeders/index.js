@@ -14,7 +14,7 @@ var conf = {
   }
 };
 
-//db.getCollection('pdvs').createIndex( { address : "2dsphere" } );
+// db.getCollection('pdvs').createIndex( { address : "2dsphere" } );
 
 /*
 db.getCollection('pdvs').insert(
@@ -24,6 +24,5 @@ db.getCollection('pdvs').insert(
    }
 )
 */
-
 
 mongoImport(conf);
