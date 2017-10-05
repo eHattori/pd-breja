@@ -10,6 +10,7 @@ export default class MongoDbConnection {
       };
 
       mongoose.Promise = require('promise');
+
       this._conn = mongoose.connect('mongodb://' + config.mongoConfig.databaseHost + '/' + config.mongoConfig.databaseName, options);
     } catch (error) {
       this._conn = null;

@@ -16,7 +16,7 @@ if [ -f "package.json" ]; then
   npm install --only=dev
 fi
 
-./node_modules/semistandard/bin/cmd.js
+./node_modules/semistandard/bin/cmd.js --fix
 
 echo "===> Running tests..."
 export NODE_ENV="test"
