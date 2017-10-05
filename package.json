@@ -21,6 +21,7 @@
         "mocha": "^3.5.3",
         "semistandard": "^11.0.0",
         "should": "^13.1.0",
+        "sinon": "^4.0.1",
         "supertest": "^3.0.0"
     },
     "dependencies": {
@@ -28,11 +29,15 @@
         "cors": "^2.8.4",
         "dotenv": "^4.0.0",
         "express": "^4.16.0",
+        "joi": "^11.1.1",
+        "joigoose": "^2.0.0",
         "jsonwebtoken": "^8.0.1",
         "mongoimport": "^1.0.6",
         "mongoose": "^4.12.0",
+        "mongoose-geojson-schema": "^2.1.2",
         "mysql": "^2.14.1",
         "pm2": "^2.7.1",
+        "promise": "^8.0.1",
         "sequelize": "^3.30.4",
         "sequelize-cli": "^3.0.0",
         "winston": "^2.3.1"

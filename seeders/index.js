@@ -14,4 +14,16 @@ var conf = {
   }
 };
 
+//db.getCollection('pdvs').createIndex( { address : "2dsphere" } );
+
+/*
+db.getCollection('pdvs').insert(
+   {
+      _id: "pdvid",
+      seq: 51 //pegar ultimo valor
+   }
+)
+*/
+
+
 mongoImport(conf);

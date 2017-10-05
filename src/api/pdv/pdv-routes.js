@@ -1,3 +1,5 @@
+import PdvController from './pdv-controller';
+
 
 export default class PdvRoutes {
   constructor (express) {
@@ -12,7 +14,7 @@ export default class PdvRoutes {
     });
 
     app.get(':id', (req, res) => {
-            // To-DO get by :id
+            res.status(404).json({status : "Pdv not found!"});
     });
 
     app.get('', (req, res) => {
