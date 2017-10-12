@@ -7,5 +7,5 @@ set -e
 
 if [ -f "package.json" ]; then
   echo "==> Installing module dependencies…"
-  npm install
+  npm install --no-optional
 fi

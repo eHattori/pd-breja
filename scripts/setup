@@ -9,9 +9,4 @@ cd "$(dirname "$0")/.."
 
 scripts/bootstrap
 
-echo "===> Setting DB..."
-
-scripts/migration
-#Seed database
-
 echo "===> App is ready"

@@ -15,6 +15,8 @@ var conf = {
 };
 
 // db.getCollection('pdvs').createIndex( { address : "2dsphere" } );
+// db.getCollection('pdvs').createIndex( { coverageArea : "2dsphere" } );
+// db.getCollection('pdvs').createIndex({ "document": 1 }, { unique: true });
 
 /*
 db.getCollection('pdvs').insert(

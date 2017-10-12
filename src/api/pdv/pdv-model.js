@@ -11,4 +11,12 @@ export default class PdvModel {
   getById (id) {
     return this._model.findOne({'id': id.toString()}, {'_id': false});
   }
+
+  create (obj) {
+    return this._model.find().count().then((count) => {
+      obj.id = (count + 1).toString();
+      var pdv = new this._model(obj);
+      return pdv.save();
+    });
+  }
 }

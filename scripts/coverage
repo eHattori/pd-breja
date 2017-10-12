@@ -13,7 +13,8 @@ mkdir -p ./coverage
 
 echo "===> Running coverage..."
 # run the tests
-./node_modules/.bin/lab -c -S -T ./node_modules/lab-babel -l -r html -o ./coverage/coverage.html -r lcov -o ./coverage/lcov.info -r json -o ./coverage/data.json
+./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- test/**/*.js --compilers js:babel-register 
+
 # submit to coveralls
 # enable coveralls
 cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
