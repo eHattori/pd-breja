@@ -17,4 +17,6 @@ echo "===> Running coverage..."
 
 # submit to coveralls
 # enable coveralls
-cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
+
+echo "===> Send to coveralls..."
+./node_modules/.bin/coveralls < ./coverage/lcov.info
