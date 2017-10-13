@@ -47,7 +47,6 @@ describe('Test PdvRoutes', function () {
         });
     });
 
-
     it('Should return status 400 when find a PDV with some error', function(done){
         
         var stubController = sinon.stub(pdvApp._controller, 'getById').callsFake(function(id, callback){            
@@ -63,12 +62,78 @@ describe('Test PdvRoutes', function () {
         });
     });
 
-
     it('Should return status 500 when occur some error', function(done){
         
         var stubController = sinon.stub(pdvApp._controller, 'getById').throws("Exception");
 
         request.get('/1')
+            .expect(500)
+            .end(function(err, res) {
+                stubController.restore();
+                (res.statusCode == 500).should.be.true();                
+                done(err);
+        });
+    });
+
+    it('Should return status 400 when try create a wrong PDV', function(done){
+        
+        var stubController = sinon.stub(pdvApp._controller, 'createPdv').callsFake(function(obj, callback){            
+            callback({ pdvs: [], error : ["SOME ERROR"]});
+        });
+
+        request.post('/')            
+            .expect(400)
+            .send({a : "a"})
+            .end(function(err, res) {
+                stubController.restore();
+                (res.statusCode == 400).should.be.true();                
+                done(err);
+        });
+    });
+
+    it('Should return status 201 when try create a new PDV', function(done){
+        
+        var stubController = sinon.stub(pdvApp._controller, 'createPdv').callsFake(function(obj, callback){            
+            callback({ pdvs: 
+                        [ { tradingName: 'Adega da Cerveja - Pinheiros',
+                            ownerName: 'Zé da Silva',
+                            document: '36167948895',
+                            id: '1' } ] }
+                );
+        });
+
+        var obj = { 
+            "tradingName": "Adega da Cerveja - Pinheiros",
+            "ownerName": "Zé da Silva",
+            "document": "36167948895",
+            "coverageArea": { 
+            "type": "MultiPolygon", 
+                "coordinates": [
+                    [[[30, 20], [45, 40], [10, 40], [30, 20]]], 
+                    [[[15, 5], [40, 10], [10, 20], [5, 10], [15, 5]]]
+                ]
+            }, 
+            "address": { 
+                "type": "Point",
+                "coordinates": [-46.57421, -21.785741]
+            }, 
+        }
+
+        request.post('/')            
+            .expect(201)
+            .send(obj)
+            .end(function(err, res) {
+                stubController.restore();
+                (res.statusCode == 201).should.be.true();                
+                done(err);
+        });
+    });
+
+     it('Should return status 500 when occur some error in create PDV', function(done){
+        
+        var stubController = sinon.stub(pdvApp._controller, 'createPdv').throws("Exception");
+
+        request.post('/')
             .expect(500)
             .end(function(err, res) {
                 stubController.restore();

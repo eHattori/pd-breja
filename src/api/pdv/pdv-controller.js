@@ -2,9 +2,7 @@ import PdvBusiness from './pdv-business';
 
 export default class PdvController {
   constructor (business) {
-    if (!business) { this._business = new PdvBusiness(); } else {
-      this._business = business;
-    }
+    this._business = !business ? new PdvBusiness() : business;
   }
 
   getById (id, callback) {
