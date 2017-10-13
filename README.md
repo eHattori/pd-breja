@@ -13,10 +13,10 @@ Use `http://jwtbuilder.jamiekurtz.com/` to generate token in dev
 Jwt - Ok
 Test - Ok
 Travis - Ok
-Coveralls -
+Coveralls - Ok
 Business - Dev
 Heroku - 
 Cross-Plataform - 
-GraphQL - ? 
+
 
 ...
