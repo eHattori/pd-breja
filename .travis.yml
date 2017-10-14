@@ -8,7 +8,7 @@ after_success:
 deploy:
   provider: heroku
   api_key:
-    secure: $HEROKU_API_KEY
+    secure: QAaHmbq2YSgX7gq9Cc+Gdw4IarBYrbVzuKy9SpF98e/teDSyuPrwc0XMK68wwBbr+1pjT1MhBG0Qeer9GEhYMuD2qXT5zTHmtQxhFbL1fqG6EL9uygQw/Gmi/Wktje5PcGX5HEUYkrUUIkzp4WBh8g88rE0VdHK2d53g7VLF+SbD9vM9amY0aNEdrJILJ2Th4mbZahmLXoNmGYkb/BgBTJ+J2g8/nxyAPZ1TchSRa+ZSxgmxWw++iJw+ziTT/YjG+/b2Cfw3KY48qDZTePIwYx9u+Q0Kuw7Yq6+KIxfzfQaeUBXtnFDOOr0iQx+VfuqjLgXlFvFrcrse3aAz9J45SAM8qvoCQRdk0s5eHK6uBqgIZYkg3WQcR9+FACVIpHYfcxmd79k3DptZ8oSr09bUzB7/JwKzzF2MfAxvLZ4BUMvJAfmwNWjzOw3imc5ei9V51S7cw7d5rrUHFGghudm9K2dyjXbpG/zzOz/WHf32BWm2pSU+g5UnNyr+npVZ4fPNBcCicsIa88jPvSmgakj+3fZk1nFCCMik9HwKnWNbv0bKvJwZX5uLRSumme7O2QCZJbJghFozETVzGI2VPv7SnHpq9bUvaZxL0JJhHJ9WuGLL14+IM4aR1NyLZnGasmEQwDkdbwBEW3xLoqRj3nk5P3kQXcrGNPFCSrEdxyFQPQY=
   app: pd-breja
   on:
     repo: eHattori/pd-breja
