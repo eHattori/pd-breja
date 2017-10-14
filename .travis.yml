@@ -1,7 +1,12 @@
 language: node_js
 node_js:
-  - "8"
+- '8'
 services:
-  - mongodb
+- mongodb
 after_success:
-  - scripts/coverage
+- scripts/coverage
+deploy:
+  provider: heroku
+  app: pd-breja
+  api_key:
+    secure: $HEROKU_API_KEY
