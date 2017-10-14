@@ -7,6 +7,8 @@ after_success:
 - scripts/coverage
 deploy:
   provider: heroku
-  app: pd-breja
   api_key:
     secure: $HEROKU_API_KEY
+  app: pd-breja
+  on:
+    repo: eHattori/pd-breja
