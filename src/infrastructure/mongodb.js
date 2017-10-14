@@ -10,8 +10,10 @@ export default class MongoDbConnection {
       };
 
       mongoose.Promise = require('promise');
-
-      this._conn = mongoose.connect('mongodb://' + config.mongoConfig.databaseHost + '/' + config.mongoConfig.databaseName, options);
+      
+      var uri = 'mongodb://' + config.mongoConfig.databaseHost + '/' + config.mongoConfig.databaseName;
+      this._conn = mongoose.connect((config.mongoConfig.mongoUri !== '' ? config.mongoConfig.mongoUri : uri), options);
+      
     } catch (error) {
       this._conn = null;
     }
