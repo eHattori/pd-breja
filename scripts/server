@@ -7,6 +7,8 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+scripts/bootstrap
+
 if test -z "$NODE_ENV" && NODE_ENV='development' 
 then
   echo "==> Execute in development mode."
