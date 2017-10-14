@@ -37,6 +37,8 @@ export default class PdvSchema {
       }
     }, { typeKey: '$type' });
 
+    schema.index([{address: '2dsphere'}, {coverageArea: '2dsphere'}]);
+
     return schema;
   }
 }

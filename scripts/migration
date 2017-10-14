@@ -4,4 +4,11 @@
 #                locally.
 
 cd "$(dirname "$0")/.."
+
+echo "===> Running migration..."
 ./node_modules/.bin/babel-node ./seeders/index.js
+
+echo "===> Migration Complete..."
+
+
+

@@ -1,30 +1,66 @@
 var pdvsData = require('./pdvs.json');
-var mongoImport = require('mongoimport');
 var config = require('../config/mongodb.js');
 
-var conf = {
-  fields: pdvsData.pdvs,
-  db: config.databaseName,
-  collection: 'pdvs',
-  host: config.databaseHost + ':' + config.databasePort,
-  username: config.databaseUser,
-  password: config.databasePassword,
-  callback: (err, db) => {
-    if (err) { console.log(err); } else { console.log('===> Migration executed...'); }
-  }
+var mongoose = require('mongoose');
+
+var options = {
+  useMongoClient: true,
+  poolSize: 5
 };
 
-// db.getCollection('pdvs').createIndex( { address : "2dsphere" } );
-// db.getCollection('pdvs').createIndex( { coverageArea : "2dsphere" } );
-// db.getCollection('pdvs').createIndex({ "document": 1 }, { unique: true });
+mongoose.Promise = require('promise');
 
-/*
-db.getCollection('pdvs').insert(
-   {
-      _id: "pdvid",
-      seq: 51 //pegar ultimo valor
-   }
-)
-*/
+var uri = 'mongodb://' + config.databaseHost + '/' + config.databaseName;
+var db = mongoose.connect((config.mongoUri !== '' ? config.mongoUri : uri), options);
 
-mongoImport(conf);
+var schema = new mongoose.Schema({
+  id: { type: String, required: true },
+  tradingName: {
+    type: String,
+    required: [true, 'PDV tradingName is required']
+  },
+  ownerName: {
+    type: String,
+    required: [true, 'PDV ownerName is required']
+  },
+  document: {
+    type: String,
+    unique: true,
+    validate: {
+      validator: function (v) {
+        return (/^\d{2}\.\d{3}\.\d{3}\/\d{4}-d{2}$/.test(v) || /^\d{11}$/.test(v));
+      },
+      message: '{VALUE} is not a valid document'
+    },
+    required: [true, 'PDV document is required']
+  },
+  coverageArea: {
+    type: { type: String },
+    coordinates: [[[[Number]]]]
+  },
+  address: {
+    type: { type: String },
+    coordinates: [Number]
+  }
+});
+
+schema.index([{address: '2dsphere'}, {coverageArea: '2dsphere'}]);
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  var pdv = mongoose.model('pdvs', schema);
+
+  pdv.init().then(function () {
+    for (var i in pdvsData.pdvs) {
+      pdv.collection.insert(pdvsData.pdvs[i], function (err, r) {
+        if (err && err.message.indexOf('duplicate key error') !== -1) {
+          console.log('Duplicate Document');
+        } else {
+          console.log('Row inserted!');
+        }
+
+        db.close();
+      });
+    }
+  });
+});
