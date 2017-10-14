@@ -15,7 +15,7 @@ Test - Ok
 Travis - Ok
 Coveralls - Ok
 Business - Dev
-Heroku - 
+Heroku - Ok
 Cross-Plataform - 
 
 
