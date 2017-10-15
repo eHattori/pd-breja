@@ -80,4 +80,23 @@ describe('Test PdvBusiness', function () {
         });
     });
 
+    it('Should return a PDV in getById',function(done){
+
+        var stub = sinon.stub(business._model, 'getById').resolves(           
+                [ { _id: '59e2978bb3dee11c1f7d818e',
+                    id: '1',
+                    tradingName: 'Adega Osasco',
+                    ownerName: 'Ze da Ambev',
+                    document: '02.453.716/000170',
+                    coverageArea: { coordinates: [], type: 'MultiPolygon' },
+                    address: { coordinates: [], type: 'Point' } } ]
+        );
+
+        business.getById(1, function(err, pdv){
+            stub.restore();
+            (pdv !== null).should.be.true();            
+            done();
+        });
+    });
+
 });

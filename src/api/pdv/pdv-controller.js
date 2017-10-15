@@ -27,14 +27,14 @@ export default class PdvController {
     });
   }
 
-  bindReturn(err, pdv, callback) {
+  bindReturn (err, pdv, callback) {
     var result = {
-        pdvs: []
-      };
+      pdvs: []
+    };
 
-      if (err) result.error = err;
-      if (pdv) result.pdvs.push(pdv);
+    if (err) result.error = err;
+    if (pdv) result.pdvs.push(pdv);
 
-      callback(result);
+    callback(result);
   }
 }

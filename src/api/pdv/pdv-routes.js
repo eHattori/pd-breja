@@ -2,7 +2,7 @@ import PdvController from './pdv-controller';
 import bodyParser from 'body-parser';
 
 export default class PdvRoutes {
-  constructor (express, controller) {    
+  constructor (express, controller) {
     this.express = express;
     /* istanbul ignore next */
     this._controller = !controller ? new PdvController() : controller;

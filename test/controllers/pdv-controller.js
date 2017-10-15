@@ -91,4 +91,24 @@ describe('Test PdvController', function () {
         });
     });
 
+    it('Should return { pdvs : [ ... ] } when PDV found in getClosestPdv', function(done){
+
+        var stub = sinon.stub(pdvController._business, 'getClosestPdv').callsFake(function(lnt, lat ,callback){            
+            callback(null, {
+                id: '1',
+                tradingName: 'Adega Osasco',
+                ownerName: 'Ze da Ambev',
+                document: '02.453.716/000170',
+                coverageArea: [],
+                address: [] 
+            });
+        });
+
+        pdvController.getClosestPdv(1,1, function(result){
+            stub.restore();
+            (result.pdvs.length == 1).should.be.true();
+            done();
+        });        
+    }); 
+
 });

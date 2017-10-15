@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 import config from '../api/config';
 
 export default class MongoDbConnection {
-
   /* istanbul ignore next */
   constructor () {
     try {
