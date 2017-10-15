@@ -8,10 +8,12 @@ export default class PdvModel {
     this._model = this._db.model('pdvs', this._schema.getSchema());
   }
 
+  /* istanbul ignore next */
   getById (id) {
     return this._model.findOne({'id': id.toString()}, {'_id': false});
   }
 
+  /* istanbul ignore next */
   create (obj) {
     return this._model.find().count().then((count) => {
       obj.id = (count + 1).toString();
@@ -20,6 +22,7 @@ export default class PdvModel {
     });
   }
 
+  /* istanbul ignore next */
   getClosestPdv (lng, lat) {
     var _this = this;
     return this._model.findOne({
