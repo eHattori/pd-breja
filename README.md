@@ -8,18 +8,18 @@ PD-Breja é uma API REST desenvolvida em Javascript com NodeJS, em que o usuári
 
 PDV = Ponto de Venda :)
 
-#Instalação
+# Instalação
 
 O PD-Breja foi desenvolvido em NodeJs com o framework Express v4 e utiliza o banco de dados noSQL MongoDb, embora as instruções são voltadas para o Linux o NodeJS tem um ótimo suporte Cross-Plataform, sendo assim, você consegue rodar o PD-breja no Linux, Windows ou OSX com alguns ajustes.
 
-##Pré-requisitos
+## Pré-requisitos
 
 * node v8
 * npm v5
 * docker v17 --dev
 * docker-compose v1.16 --dev
 
-##Instalando Dependências
+## Instalando Dependências
 
 Instale os pacotes necessários
 
@@ -33,7 +33,7 @@ Suba um container do MongodDB
 sudo docker-compose up -d
 ```
 
-##Iniciando a Aplicação
+## Iniciando a Aplicação
 
 O PD-breja utliza um gerenciador de processos chamado PM2
 
@@ -43,7 +43,7 @@ Para iniciar uma intância do app:
 npm start
 ```
 
-##Executando os testes
+## Executando os testes
 
 Para executar os testes basta executar o comando 
 
@@ -51,7 +51,7 @@ Para executar os testes basta executar o comando
 npm test
 ```
 
-##Deploy e CI
+## Deploy e CI
 
 Assim que é feito um commit na branch master, o Travis CI executa os testes e faz o deploy no app do heroku:
 
@@ -59,7 +59,7 @@ https://pd-breja.herokuapp.com/
 
 **Toda requisição necessita de um token de autenticação
 
-##Migração de Dados
+## Migração de Dados
 
 Para executar o migration de dados
 
@@ -67,7 +67,7 @@ Para executar o migration de dados
 npm run migrate
 ```
 
-#Como funciona o PD-breja??
+# Como funciona o PD-breja??
 
 Os Pontos de Vendas são cadastrados com um POST
 
@@ -75,7 +75,7 @@ Os Pontos de Vendas são cadastrados com um POST
 * O campo document é unico
 * Os campos coverageArea e address seguem o padrão GeoJSON
 
-##POST
+## POST
 
 Url: 'https://pd-breja.herokuapp.com/pdv/'
 
@@ -115,7 +115,7 @@ Exemplo de Resposta com o StatusCode 201:
 }
 ```
 
-##GET por id
+## GET por id
 
 Url: 'https://pd-breja.herokuapp.com/pdv/:id'
 
@@ -151,7 +151,7 @@ Exemplo de Resposta com o StatusCode 200:
 }
 ```
 
-##GET por longitude e latitude
+## GET por longitude e latitude
 
 Url: 'https://pd-breja.herokuapp.com/pdv?lng=-46.772907&lat=-23.528173'
 
@@ -187,7 +187,7 @@ Exemplo de Resposta com o StatusCode 200:
 }
 ```
 
-##ERROR
+## ERROR
 
 Exemplo de erros com StatusCode 400, 404 ou 500:
 
@@ -200,12 +200,12 @@ Exemplo de erros com StatusCode 400, 404 ou 500:
 }
 ```
 
-#To-DO
+# To-DO
 
 * Implementar Swagger
 * Configurar Servidor para logs
 * Implementar BDD
 
-#Meta
+# Meta
 
 Eduardo Hattori – @eHattori
