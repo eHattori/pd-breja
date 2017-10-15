@@ -83,4 +83,12 @@ describe('Test PdvController', function () {
         });
     });
 
+    it("Should return err and result in _bindReturn", function(done){
+        pdvController.bindReturn('SOME ERROR', { pdv :"a"}, function(result){            
+            (result.error === 'SOME ERROR').should.be.true();
+            (result.pdvs.length > 0).should.be.true();
+            done();
+        });
+    });
+
 });
