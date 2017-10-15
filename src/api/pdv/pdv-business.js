@@ -39,4 +39,29 @@ export default class PdvBusiness {
       callback(errors);
     });
   }
+
+  getClosestPdv (lng, lat, callback) {
+
+    var errors = [];
+
+    //valid the longitude and latitude values
+    if(isNaN(lng) || isNaN(lat)){
+      errors.push("Longitude or Latitude should be Number");
+    } else {
+      if(lng < -180 || lng > 180)
+        errors.push("Longitute is out of bounds (-180, +180)");
+
+      if(lat < -90 || lat > 90)
+        errors.push("Latitude is out of bounds (-90, +90)");
+    }
+
+    if(errors.length > 0)
+      return callback(errors);
+
+    this._model.getClosestPdv(lng, lat).then((pdv) => {
+      callback(null, pdv);
+    }, (err) => {
+      callback(err);
+    });
+  }
 }

@@ -53,4 +53,31 @@ describe('Test PdvBusiness', function () {
             done();
         });
     });
+
+    it('Should return a PDV that closest to it and that meets the same, according to its coverage area',function(done){
+
+        var stub = sinon.stub(business._model, 'getClosestPdv').resolves(           
+                [ { _id: '59e2978bb3dee11c1f7d818e',
+                    id: '1',
+                    tradingName: 'Adega Osasco',
+                    ownerName: 'Ze da Ambev',
+                    document: '02.453.716/000170',
+                    coverageArea: { coordinates: [], type: 'MultiPolygon' },
+                    address: { coordinates: [], type: 'Point' } } ]
+        );
+
+        business.getClosestPdv(-43.36556, -22.99669,function(err, pdv){
+            stub.restore();
+            (pdv !== null).should.be.true();            
+            done();
+        });
+    });
+
+    it('Should return error when pass wrong longitude to getClosestPdv', function(done){
+        business.getClosestPdv(-181, -91, function(err,pdv){
+            (err.length == 2).should.be.true();
+            done();
+        });
+    });
+
 });
