@@ -24,21 +24,21 @@ export default class PdvModel {
     var _this = this;
     return this._model.findOne({
       coverageArea: {
-          $geoIntersects: {
-              $geometry: {
-                  type: 'Point',
-                  coordinates: [ lng, lat ]
-              }
+        $geoIntersects: {
+          $geometry: {
+            type: 'Point',
+            coordinates: [ lng, lat ]
           }
         }
-    }).then((pdv) =>{
-      return _this._model.find(  { 
-            address: {
-                $geoWithin: { 
-                    $geometry: pdv.coverageArea 
-                   } 
-                } 
-          });
+      }
+    }).then((pdv) => {
+      return _this._model.find({
+        address: {
+          $geoWithin: {
+            $geometry: pdv.coverageArea
+          }
+        }
+      });
     });
   }
 }

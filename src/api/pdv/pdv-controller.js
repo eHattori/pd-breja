@@ -18,7 +18,7 @@ export default class PdvController {
     });
   }
 
-   getClosestPdv (lng, callback) {
+  getClosestPdv (lng, lat, callback) {
     this._business.getClosestPdv(lng, lat, function (err, pdv) {
       var result = {
         pdvs: []
