@@ -15,10 +15,13 @@ export default class PdvModel {
 
   /* istanbul ignore next */
   create (obj) {
-    return this._model.find().count().then((count) => {
-      obj.id = (count + 1).toString();
-      var pdv = new this._model(obj);
-      return pdv.save();
+    return this._model.init().then(() => {
+      return this._model.find({}, {id: 1, _id: 0}).sort({$natural: -1}).limit(1)
+        .then((lstRec) => {
+          obj.id = (parseInt(lstRec.length > 0 ? lstRec[0].id : 0) + 1).toString();
+          var pdv = new this._model(obj);
+          return pdv.save();
+        }, (err) => { console.log(err); });
     });
   }
 

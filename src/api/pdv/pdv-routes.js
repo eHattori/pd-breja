@@ -1,5 +1,6 @@
 import PdvController from './pdv-controller';
 import bodyParser from 'body-parser';
+import logger from '../../utils/logger';
 
 export default class PdvRoutes {
   constructor (express, controller) {
@@ -15,6 +16,7 @@ export default class PdvRoutes {
        .use(bodyParser.urlencoded({ extended: true }));
 
     app.get('/:id', (req, res) => {
+      logger.info('==> Routes: PDV - ID: ' + req.params.id);
       this._controller.getById(req.params.id, function (result) {
         try {
           var status = result.pdvs.length > 0 ? 200 : (result.error ? 400 : 404);
@@ -26,6 +28,7 @@ export default class PdvRoutes {
     });
 
     app.post('/', (req, res) => {
+      logger.info('==> Routes: PDV - POST');
       this._controller.createPdv(req.body, function (result) {
         try {
           var status = result.pdvs.length > 0 ? 201 : 400;
@@ -37,6 +40,7 @@ export default class PdvRoutes {
     });
 
     app.use('/', (req, res) => {
+      logger.info('==> Routes: PDV - LNG: ' + req.query.lng + ' LAT: ' + req.query.lat);
       this._controller.getClosestPdv(req.query.lng, req.query.lat, function (result) {
         try {
           var status = result.pdvs.length > 0 ? 200 : (result.error ? 400 : 404);

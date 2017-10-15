@@ -1,4 +1,5 @@
 'use strict';
+import logger from '../../utils/logger';
 
 export default class HealthRoute {
   constructor (express) {
@@ -9,6 +10,7 @@ export default class HealthRoute {
     var app = this.express();
 
     app.get('/ping', function (req, res) {
+      logger.info('==> Routes: Health - Ping');
       res.status(200).json({status: 'pong'});
     });
 

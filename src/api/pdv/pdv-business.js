@@ -1,4 +1,5 @@
 import PdvModel from './pdv-model';
+import logger from '../../utils/logger';
 
 export default class PdvBusiness {
   constructor (model) {
@@ -10,12 +11,17 @@ export default class PdvBusiness {
   }
 
   getById (id, callback) {
+    var start = new Date();
     this._model.getById(id).then((pdv) => {
+      var end = new Date() - start;
+      logger.info('==> BUSINESS.getById ID: ' + id + ' TIME: %dms ', end);
+
       callback(null, pdv);
     }, (err) => { callback(err); });
   }
 
   createPdv (obj, callback) {
+    var start = new Date();
     this._model.create(obj).then((pdv) => {
       var objPdv = {
         tradingName: pdv.tradingName,
@@ -24,16 +30,19 @@ export default class PdvBusiness {
         id: pdv.id
       };
 
+      var end = new Date() - start;
+      logger.info('==> BUSINESS.createPdv TIME: %dms ', end);
+
       callback(null, objPdv);
     }, (err) => {
       var errors = [];
 
       if (err.name === 'ValidationError') {
         errors = err.message.toString().split(', ');
-      }
-
-      if (err.message.indexOf('duplicate key error') !== -1) {
+      } else if (err.message.indexOf('duplicate key error') !== -1) {
         errors = ['document: "{DOCUMENT}" already exist'.replace('{DOCUMENT}', obj.document)];
+      } else {
+        errors = [err];
       }
 
       callback(errors);
@@ -41,6 +50,7 @@ export default class PdvBusiness {
   }
 
   getClosestPdv (lng, lat, callback) {
+    var start = new Date();
     var errors = [];
 
     // valid the longitude and latitude values
@@ -55,6 +65,9 @@ export default class PdvBusiness {
     if (errors.length > 0) { return callback(errors); }
 
     this._model.getClosestPdv(lng, lat).then((pdv) => {
+      var end = new Date() - start;
+      logger.info('==> BUSINESS.getClosestPdv TIME: %dms ', end);
+
       callback(null, pdv);
     }, (err) => {
       callback(err);

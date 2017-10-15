@@ -3,17 +3,17 @@ import mongoose from 'mongoose';
 export default class PdvSchema {
   getSchema () {
     const schema = new mongoose.Schema({
-      id: { $type: String, required: true },
+      id: { type: String, required: true },
       tradingName: {
-        $type: String,
+        type: String,
         required: [true, 'PDV tradingName is required']
       },
       ownerName: {
-        $type: String,
+        type: String,
         required: [true, 'PDV ownerName is required']
       },
       document: {
-        $type: String,
+        type: String,
         unique: true,
         validate: {
           validator: function (v) {
@@ -24,18 +24,14 @@ export default class PdvSchema {
         required: [true, 'PDV document is required']
       },
       coverageArea: {
-        $type: Object,
-        type: String,
-        coordinates: [[[[Number]]]],
-        required: [true, 'PDV coverageArea is required']
+        type: { type: String },
+        coordinates: [[[[Number]]]]
       },
       address: {
-        $type: Object,
-        type: String,
-        coordinates: [Number],
-        required: [true, 'PDV coverageArea is required']
+        type: { type: String },
+        coordinates: [Number]
       }
-    }, { typeKey: '$type' });
+    });
 
     schema.index([{address: '2dsphere'}, {coverageArea: '2dsphere'}]);
 
