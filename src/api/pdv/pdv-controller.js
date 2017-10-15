@@ -18,6 +18,19 @@ export default class PdvController {
     });
   }
 
+   getClosestPdv (lng, callback) {
+    this._business.getClosestPdv(lng, lat, function (err, pdv) {
+      var result = {
+        pdvs: []
+      };
+
+      if (err) result.error = err;
+      if (pdv) result.pdvs.push(pdv);
+
+      callback(result);
+    });
+  }
+
   createPdv (obj, callback) {
     this._business.createPdv(obj, function (err, pdv) {
       var result = {

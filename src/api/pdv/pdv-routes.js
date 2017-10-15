@@ -13,6 +13,17 @@ export default class PdvRoutes {
     app.use(bodyParser.json())
        .use(bodyParser.urlencoded({ extended: true }));
 
+    app.use('/', (req, res) => {
+      this._controller.getClosestPdv(req.params.lng, req.params.lat, function (result) {
+        try {
+          var status = result.pdvs.length > 0 ? 200 : (result.error ? 400 : 404);
+          res.status(status).json(result);
+        } catch (error) {
+          res.status(500).json(error);
+        }
+      });
+    });
+
     app.get('/:id', (req, res) => {
       this._controller.getById(req.params.id, function (result) {
         try {
