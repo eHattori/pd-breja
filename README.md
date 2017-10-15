@@ -210,4 +210,4 @@ Exemplo de erros com StatusCode 400, 404 ou 500:
 
 Eduardo Hattori – [@eHattori]
 
-[@[@eHattori]: https://github.com/eHattori
+[@eHattori]: https://github.com/eHattori
