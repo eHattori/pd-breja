@@ -2,8 +2,9 @@ import PdvController from './pdv-controller';
 import bodyParser from 'body-parser';
 
 export default class PdvRoutes {
-  constructor (express, controller) {
+  constructor (express, controller) {    
     this.express = express;
+    /* istanbul ignore next */
     this._controller = !controller ? new PdvController() : controller;
   }
 
@@ -36,7 +37,7 @@ export default class PdvRoutes {
     });
 
     app.use('/', (req, res) => {
-      this._controller.getClosestPdv(req.params.lng, req.params.lat, function (result) {
+      this._controller.getClosestPdv(req.query.lng, req.query.lat, function (result) {
         try {
           var status = result.pdvs.length > 0 ? 200 : (result.error ? 400 : 404);
           res.status(status).json(result);
