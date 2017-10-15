@@ -77,7 +77,7 @@ Os Pontos de Vendas são cadastrados com um POST
 
 ## POST
 
-Url: 'https://pd-breja.herokuapp.com/pdv/'
+Url: https://pd-breja.herokuapp.com/pdv/
 
 ```
 Exemplo de corpo da requisição:
@@ -117,7 +117,7 @@ Exemplo de Resposta com o StatusCode 201:
 
 ## GET por id
 
-Url: 'https://pd-breja.herokuapp.com/pdv/:id'
+Url: https://pd-breja.herokuapp.com/pdv/:id
 
 Exemplo de Resposta com o StatusCode 200:
 
@@ -153,7 +153,7 @@ Exemplo de Resposta com o StatusCode 200:
 
 ## GET por longitude e latitude
 
-Url: 'https://pd-breja.herokuapp.com/pdv?lng=-46.772907&lat=-23.528173'
+Url: https://pd-breja.herokuapp.com/pdv?lng=-46.772907&lat=-23.528173
 
 Exemplo de Resposta com o StatusCode 200:
 
@@ -208,4 +208,4 @@ Exemplo de erros com StatusCode 400, 404 ou 500:
 
 # Meta
 
-Eduardo Hattori – @eHattori
+Eduardo Hattori – [@eHattori]: https://github.com/eHattori
